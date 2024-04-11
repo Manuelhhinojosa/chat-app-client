@@ -1,4 +1,8 @@
+// styles
 import "./App.css";
+
+// dependencies
+import { Axios } from "axios";
 
 // router
 import { Routes, Route } from "react-router-dom";
