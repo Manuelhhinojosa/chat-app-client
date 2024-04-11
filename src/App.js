@@ -2,7 +2,7 @@
 import "./App.css";
 
 // dependencies
-import { Axios } from "axios";
+import axios from "axios";
 
 // router
 import { Routes, Route } from "react-router-dom";
@@ -13,7 +13,14 @@ import HomePage from "./components/pageComponents/HomePage/HomePage";
 import ChatPage from "./components/pageComponents/ChatPage/ChatPage";
 // general components
 
+// hooks
+
+// component function
 function App() {
+  // variables
+
+  // functions
+
   return (
     <div className="AppContainer">
       <Routes>
