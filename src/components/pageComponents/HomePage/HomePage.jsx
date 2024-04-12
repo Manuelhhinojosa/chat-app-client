@@ -1,6 +1,9 @@
 //default
 import React from "react";
 
+// styles
+import "./HomePage.scss";
+
 //dependencies
 import {
   Container,

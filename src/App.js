@@ -1,5 +1,5 @@
 // styles
-import "./App.css";
+import "./App.scss";
 
 // dependencies
 import axios from "axios";
