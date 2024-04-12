@@ -24,13 +24,11 @@ const HomePage = () => {
   return (
     <Container className="container">
       <Box className="boxTop">
-        <Text fontSize={"xx-large"} fontWeight={"300"}>
-          ChatApp
-        </Text>
+        <Text fontSize={"xx-large"}>ChatApp</Text>
       </Box>
 
       <Box className="boxBottom">
-        <Tabs className="tabs" variant="soft-rounded" colorScheme="orange">
+        <Tabs className="tabs" variant="soft-rounded" colorScheme="gray">
           <TabList className="tabList" justifyContent={"space-around"}>
             <Tab className="tab">Login</Tab>
             <Tab className="tab">Sign up</Tab>

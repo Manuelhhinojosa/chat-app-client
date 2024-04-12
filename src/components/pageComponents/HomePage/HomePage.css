@@ -9,6 +9,7 @@
   text-align: center;
   border: 2px solid black;
   border-radius: 1rem;
+  font-weight: 900;
 }
 
 .boxBottom {
@@ -26,6 +27,5 @@
 }
 
 .tab {
-  border: 1px solid black;
   width: 30%;
 }/*# sourceMappingURL=HomePage.css.map */

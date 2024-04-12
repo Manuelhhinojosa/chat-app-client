@@ -1,0 +1,40 @@
+// styles config
+@import "../../../stylesConfig.scss";
+
+.formLabel {
+  text-align: $center;
+  font-size: $fontSizeNine;
+}
+
+.inputEl {
+  border: $transBorder;
+  text-align: $center;
+  font-size: $fontSizeNine;
+}
+
+.inputEl:hover {
+  border: $OnePxBorder;
+  transition: $transTime;
+}
+
+.inputEl:focus {
+  outline: none !important;
+  border-color: black;
+  box-shadow: 0 0 10px black;
+}
+
+.inputRightEl {
+  width: 4.5rem;
+}
+
+.showButton {
+  height: 1.75rem;
+  font-size: 0.7rem;
+  text-align: $center;
+  padding: 0.5rem;
+}
+
+.inputEl::file-selector-button {
+  border: none;
+  background-color: white;
+}
