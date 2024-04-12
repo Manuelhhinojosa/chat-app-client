@@ -1,5 +1,7 @@
+// config styles
+@import "./stylesConfig.scss";
+
 html {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
+  display: $flexDisplay;
+  margin-top: $oneRem;
 }

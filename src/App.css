@@ -1,12 +1,7 @@
-// fonts
 @import url("https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&family=Ubuntu:wght@300;400;500;700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
-
-// config styles
-@import "./stylesConfig.scss";
-
 .AppContainer {
   height: 100vh;
   width: 100vw;
-  display: $flexDisplay;
-  font-family: $mainFont;
-}
+  display: "flex";
+  font-family: "Reddit Mono";
+}/*# sourceMappingURL=App.css.map */

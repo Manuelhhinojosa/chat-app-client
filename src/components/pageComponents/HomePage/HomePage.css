@@ -1,1 +1,31 @@
-/*# sourceMappingURL=HomePage.css.map */
+.container {
+  max-width: "xl";
+}
+
+.boxTop {
+  padding: 1rem;
+  width: 100%;
+  margin: 40px 0 15px 0;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 1rem;
+}
+
+.boxBottom {
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 1rem;
+}
+
+.tabs {
+  margin-top: 1rem;
+}
+
+.tabList {
+  display: flex;
+}
+
+.tab {
+  border: 1px solid black;
+  width: 30%;
+}/*# sourceMappingURL=HomePage.css.map */

@@ -1,0 +1,34 @@
+// styles config
+@import "../../../stylesConfig.scss";
+
+.container {
+  max-width: "xl";
+}
+
+.boxTop {
+  padding: $oneRem;
+  width: $hundredWidth;
+  margin: $boxMargin;
+  text-align: $center;
+  border: $twoPxBorder;
+  border-radius: $oneRem;
+}
+
+.boxBottom {
+  width: $hundredWidth;
+  border: $twoPxBorder;
+  border-radius: $oneRem;
+}
+
+.tabs {
+  margin-top: $oneRem;
+}
+
+.tabList {
+  display: $flexDisplay;
+}
+
+.tab {
+  border: $OnePxBorder;
+  width: $thirtyPer;
+}
