@@ -13,6 +13,7 @@ import { VStack } from "@chakra-ui/layout";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
 import { Button } from "@chakra-ui/button";
+import { useToast } from "@chakra-ui/react";
 
 // component
 const Signup = () => {
@@ -29,6 +30,7 @@ const Signup = () => {
   //
   //hooks
   // const navigate = useNavigate();
+  const toast = useToast();
   //
   // ref
   const nameRef = useRef("");
@@ -63,12 +65,24 @@ const Signup = () => {
       confirmPassword === "" ||
       image === null
     ) {
-      alert("All fields must be entered");
+      toast({
+        title: "Fill all fields.",
+        description: "All fields must be entered.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
       return;
     }
 
     if (password !== confirmPassword) {
-      alert("Password and Confirm password fields must match");
+      toast({
+        title: "Password issue.",
+        description: "Password and Confirm password fields must match.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
       return;
     }
 
@@ -97,12 +111,25 @@ const Signup = () => {
         setPassword("");
         setConfirmPassword("");
         setImage(null);
-        alert("success");
-        // navigate("")
+        toast({
+          title: "Success.",
+          description: "Account has been successfully created.",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+        // navigate("/");
       })
       .catch((error) => {
-        console.log("error here");
-        console.log(error.message);
+        if (error.message === "Request failed with status code 410") {
+          toast({
+            title: "Existing user.",
+            description: "This email address is registered alerady.",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+          });
+        }
       });
   };
 
