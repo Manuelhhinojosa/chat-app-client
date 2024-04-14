@@ -1,10 +1,14 @@
-// default && react hooks
-import React, { useState } from "react";
+// default && hooks
+import React, { useState, useRef } from "react";
+// import { useNavigate } from "react-router-dom";
 
 // styles
 import "./signup.scss";
 
-// dependecies
+// dependencies
+import axios from "axios";
+
+//  components from dependecies (chackra UI)
 import { VStack } from "@chakra-ui/layout";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
@@ -14,13 +18,27 @@ import { Button } from "@chakra-ui/button";
 const Signup = () => {
   //
   // state
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  // for user creation
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [image, setImage] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [image, setImage] = useState(null);
+  //
+  //hooks
+  // const navigate = useNavigate();
+  //
+  // ref
+  const nameRef = useRef("");
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
+  const confirmPasswordRef = useRef("");
+  const imageRef = useRef(null);
+  //
+  // variables
+  const signupURL = "http://localhost:5000/api/user/signup";
 
   // functions
   //
@@ -34,11 +52,59 @@ const Signup = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  // ???
-  const postDetails = (pics) => {};
-
   // hanlde sing up
-  const handelSignup = () => {};
+  const handelSignup = (e) => {
+    e.preventDefault();
+
+    if (
+      name === "" ||
+      email === "" ||
+      password === "" ||
+      confirmPassword === "" ||
+      image === null
+    ) {
+      alert("All fields must be entered");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Password and Confirm password fields must match");
+      return;
+    }
+
+    const formData = new FormData();
+
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("image", image);
+
+    axios
+      .post(signupURL, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        nameRef.current.value = "";
+        emailRef.current.value = "";
+        passwordRef.current.value = "";
+        confirmPasswordRef.current.value = "";
+        imageRef.current.value = "";
+
+        setName("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        setImage(null);
+        alert("success");
+        // navigate("")
+      })
+      .catch((error) => {
+        console.log("error here");
+        console.log(error.message);
+      });
+  };
 
   return (
     <VStack spacing="10px">
@@ -50,6 +116,7 @@ const Signup = () => {
           onChange={(e) => {
             setName(e.target.value);
           }}
+          ref={nameRef}
         />
       </FormControl>
 
@@ -61,6 +128,7 @@ const Signup = () => {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
+          ref={emailRef}
         />
       </FormControl>
 
@@ -74,6 +142,7 @@ const Signup = () => {
             onChange={(e) => {
               setPassword(e.target.value);
             }}
+            ref={passwordRef}
           />
           <InputRightElement className="inputRightEl">
             <Button
@@ -97,6 +166,7 @@ const Signup = () => {
             onChange={(e) => {
               setConfirmPassword(e.target.value);
             }}
+            ref={confirmPasswordRef}
           />
           <InputRightElement className="inputRightEl">
             <Button
@@ -114,10 +184,12 @@ const Signup = () => {
         <FormLabel className="formLabel">Upload a profile picture</FormLabel>
         <Input
           className="inputEl"
+          name="image"
           h={"auto"}
           type="file"
           accept="image/*"
-          onChange={(e) => postDetails(e.target.files[0])}
+          onChange={(e) => setImage(e.target.files[0])}
+          ref={imageRef}
         />
       </FormControl>
 
