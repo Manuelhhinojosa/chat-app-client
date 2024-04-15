@@ -1,6 +1,6 @@
-// default && hooks
+// default && react hooks && router hooks
 import React, { useState, useRef } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // styles
 import "./signup.scss";
@@ -29,7 +29,7 @@ const Signup = () => {
   const [image, setImage] = useState(null);
   //
   //hooks
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const toast = useToast();
   //
   // ref
@@ -66,7 +66,7 @@ const Signup = () => {
       image === null
     ) {
       toast({
-        title: "Fill all fields.",
+        title: "Fill all the fields.",
         description: "All fields must be entered.",
         status: "error",
         duration: 5000,
@@ -111,14 +111,8 @@ const Signup = () => {
         setPassword("");
         setConfirmPassword("");
         setImage(null);
-        toast({
-          title: "Success.",
-          description: "Account has been successfully created.",
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-        });
-        // navigate("/");
+
+        navigate("/chats");
       })
       .catch((error) => {
         if (error.message === "Request failed with status code 410") {
@@ -130,6 +124,8 @@ const Signup = () => {
             isClosable: true,
           });
         }
+
+        // here to catch other errors
       });
   };
 
